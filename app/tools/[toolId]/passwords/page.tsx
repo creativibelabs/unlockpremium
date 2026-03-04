@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect, useRef } from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { motion } from "framer-motion";
@@ -62,6 +62,31 @@ export default function PasswordsPage({
   const [refreshKey, setRefreshKey] = useState(0);
   const [revealed, setRevealed] = useState(false);
   const [showPasswords, setShowPasswords] = useState(true);
+  const revealRef = useRef(setRevealed);
+  revealRef.current = setRevealed;
+
+  // Register OG Ads success callback
+  useEffect(() => {
+    (window as any).ogSuccess = () => {
+      revealRef.current(true);
+    };
+    return () => {
+      delete (window as any).ogSuccess;
+    };
+  }, []);
+
+  const handleReveal = () => {
+    // Remove old script instance so it re-triggers every time
+    const old = document.getElementById("ogads-locker-script");
+    if (old) old.remove();
+
+    // Dynamically inject OG Ads script on click — it auto-shows the locker
+    const script = document.createElement("script");
+    script.id = "ogads-locker-script";
+    script.type = "text/javascript";
+    script.src = "https://knowledz.com/cl/js/lk2146";
+    document.head.appendChild(script);
+  };
 
   // Credentials auto-generated on load, regenerated on refresh
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -131,7 +156,7 @@ export default function PasswordsPage({
               </p>
             </div>
             <button
-              onClick={() => setRevealed(true)}
+              onClick={handleReveal}
               className={`mt-2 inline-flex items-center gap-2.5 rounded-xl ${tool.accentColor} px-8 py-4 text-base font-bold text-white shadow-xl transition-all hover:shadow-2xl active:scale-[0.98]`}
             >
               <Eye className="h-5 w-5" />

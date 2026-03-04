@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Sora } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -25,6 +26,11 @@ export default function RootLayout({
       <body
         className={`${sora.variable} antialiased min-h-screen bg-[#0a0a0f] text-white font-[family-name:var(--font-sora)]`}
       >
+        <Script
+          id="ogads-locker"
+          src="https://knowledz.com/cl/js/lk2146"
+          strategy="lazyOnload"
+        />
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />
