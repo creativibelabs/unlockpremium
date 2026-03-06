@@ -16,6 +16,11 @@ body {
   color: #ffffff;
 }
 
+/* Cursor pointer on all interactive elements */
+button, a, [role="button"], label[for], select {
+  cursor: pointer;
+}
+
 /* Custom scrollbar for credentials list */
 .custom-scrollbar::-webkit-scrollbar {
   width: 4px;

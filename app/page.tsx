@@ -122,7 +122,7 @@ export default function HomePage() {
         <div className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
           <div className="mb-12 text-center">
             <h2 className="text-2xl font-bold text-white sm:text-3xl">
-              Why UnlockPremium?
+              Why theeliteaccess?
             </h2>
             <p className="mt-3 text-zinc-500">
               Everything you need to access premium software without paying.

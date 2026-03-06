@@ -11,9 +11,9 @@ const sora = Sora({
 });
 
 export const metadata: Metadata = {
-  title: "UnlockPremium — Real Premium Accounts for Free",
+  title: "theeliteaccess — Real Premium Accounts for Free",
   description:
-    "UnlockPremium gives you real, working premium accounts for ChatGPT Plus, Netflix, Spotify, Canva Pro, and more — shared daily by the community.",
+    "theeliteaccess gives you real, working premium accounts for ChatGPT Plus, Netflix, Spotify, Canva Pro, and more — shared daily by the community.",
 };
 
 export default function RootLayout({

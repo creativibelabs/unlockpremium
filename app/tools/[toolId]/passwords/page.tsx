@@ -65,27 +65,34 @@ export default function PasswordsPage({
   const revealRef = useRef(setRevealed);
   revealRef.current = setRevealed;
 
-  // Register OG Ads success callback
+  // Load OG Ads script in <head> once on mount + register success callback
   useEffect(() => {
+    // Success callback — called by OG Ads when user completes the offer
     (window as any).ogSuccess = () => {
-      revealRef.current(true);
+      // Save toolId so success page can load credentials without it in the URL
+      sessionStorage.setItem("og_tool_id", toolId);
+      window.location.href = "/success";
     };
+
+    // Inject script into <head> if not already present
+    if (!document.getElementById("ogads-locker-script")) {
+      const script = document.createElement("script");
+      script.id = "ogads-locker-script";
+      script.type = "text/javascript";
+      script.src = "https://creativibelabs.cloud/cl/js/lk2146";
+      document.head.appendChild(script);
+    }
+
     return () => {
       delete (window as any).ogSuccess;
     };
   }, []);
 
   const handleReveal = () => {
-    // Remove old script instance so it re-triggers every time
-    const old = document.getElementById("ogads-locker-script");
-    if (old) old.remove();
-
-    // Dynamically inject OG Ads script on click — it auto-shows the locker
-    const script = document.createElement("script");
-    script.id = "ogads-locker-script";
-    script.type = "text/javascript";
-    script.src = "https://knowledz.com/cl/js/lk2146";
-    document.head.appendChild(script);
+    // Call og_load() to show the locker — OG Ads JS activation method
+    if (typeof (window as any).og_load === "function") {
+      (window as any).og_load();
+    }
   };
 
   // Credentials auto-generated on load, regenerated on refresh

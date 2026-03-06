@@ -23,7 +23,7 @@ export default function Footer() {
           <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0 text-yellow-500 sm:mt-0" />
           <p className="text-xs text-yellow-200/70">
             <span className="font-semibold text-yellow-400">Disclaimer:</span>{" "}
-            All credentials listed on UnlockPremium are{" "}
+            All credentials listed on theeliteaccess are{" "}
             <span className="font-medium">real and shared by the community</span>. Accounts may expire or get changed — refresh for updated credentials. Use them quickly before they run out.
           </p>
         </div>
@@ -38,7 +38,7 @@ export default function Footer() {
                 <Unlock className="h-4 w-4 text-white" />
               </div>
               <span className="text-lg font-bold tracking-tight text-white">
-                Unlock<span className="text-violet-400">Premium</span>
+                theelite<span className="text-violet-400">access</span>
               </span>
             </Link>
             <p className="mt-4 max-w-xs text-sm leading-6 text-zinc-500">
@@ -69,7 +69,7 @@ export default function Footer() {
 
         <div className="mt-12 border-t border-white/5 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-zinc-600">
-            © {new Date().getFullYear()} UnlockPremium. All rights reserved.
+            © {new Date().getFullYear()} theeliteaccess. All rights reserved.
           </p>
           <p className="text-xs text-zinc-600">
             Real credentials, updated daily by our community.

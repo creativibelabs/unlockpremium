@@ -21,7 +21,7 @@ export default function Navbar() {
             <Unlock className="h-4 w-4 text-white" />
           </div>
           <span className="text-lg font-bold tracking-tight text-white">
-            Unlock<span className="text-violet-400">Premium</span>
+            theelite<span className="text-violet-400">access</span>
           </span>
         </Link>
 
