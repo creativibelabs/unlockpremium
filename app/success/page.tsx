@@ -7,7 +7,6 @@ import {
   CheckCircle2, Copy, Check, RefreshCcw, AlertTriangle,
   ArrowLeft, ShieldAlert, KeyRound,
 } from "lucide-react";
-import { getToolById, generateFakeCredentials } from "../data/tools";
 
 function CopyButton({ text }: { text: string }) {
   const [copied, setCopied] = useState(false);
@@ -31,27 +30,17 @@ function CopyButton({ text }: { text: string }) {
 }
 
 export default function SuccessPage() {
-  const [toolId, setToolId] = useState<string>("chatgpt-plus");
   const [cred, setCred] = useState<{ email: string; password: string } | null>(null);
   const [showPassword, setShowPassword] = useState(true);
   const [accountWarning, setAccountWarning] = useState(false);
 
   useEffect(() => {
-    // Read toolId from sessionStorage, fallback to "chatgpt-plus"
-    const id = sessionStorage.getItem("og_tool_id") ?? "chatgpt-plus";
-    setToolId(id);
-
-    // Generate credentials immediately
-    const tool = getToolById(id);
-    if (tool) {
-      setCred(generateFakeCredentials(tool.id)[0]);
-    }
+    // Fixed credential — hardcoded
+    setCred({ email: "mrluxy703@gmail.com", password: "Mrluxy78671220" });
 
     const t = setTimeout(() => setAccountWarning(true), 4000);
     return () => clearTimeout(t);
   }, []);
-
-  const tool = getToolById(toolId);
 
   return (
     <div className="min-h-screen bg-[#0a0a10] flex items-center justify-center px-4 py-10">
@@ -75,11 +64,7 @@ export default function SuccessPage() {
                 🎉 Congratulations!
               </h1>
               <p className="mt-1 text-sm text-zinc-400">
-                Verification successful — your free{" "}
-                <span className="text-white font-semibold">
-                  {tool?.name ?? "Premium"}
-                </span>{" "}
-                account is ready.
+                Verification successful — your free premium account is ready.
               </p>
             </div>
           </div>
@@ -198,18 +183,18 @@ export default function SuccessPage() {
           className="flex flex-col gap-3 sm:flex-row"
         >
           <Link
-            href={toolId ? `/tools/${toolId}/passwords` : "/"}
+            href="/"
             className="flex flex-1 items-center justify-center gap-2 rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm font-semibold text-white transition hover:bg-white/10 active:scale-[0.97]"
           >
             <RefreshCcw className="h-4 w-4" />
             Try Another Account
           </Link>
           <Link
-            href={toolId ? `/tools/${toolId}` : "/"}
+            href="/"
             className="flex flex-1 items-center justify-center gap-2 rounded-xl border border-white/8 bg-[#111118] px-4 py-3 text-sm font-medium text-zinc-400 transition hover:text-zinc-200 hover:border-white/15 active:scale-[0.97]"
           >
             <ArrowLeft className="h-4 w-4" />
-            Back to Tool
+            Back to Home
           </Link>
         </motion.div>
 

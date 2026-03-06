@@ -74,7 +74,7 @@ export default function SuccessPage({
                 🎉 Congratulations!
               </h1>
               <p className="mt-1 text-sm text-zinc-400">
-                Verification successful — your free{" "}
+                Verification successful
                 <span className="text-white font-semibold">
                   {tool?.name ?? "Premium"}
                 </span>{" "}
