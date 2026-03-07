@@ -89,10 +89,9 @@ export default function PasswordsPage({
   }, []);
 
   const handleReveal = () => {
-    // Call og_load() to show the locker — OG Ads JS activation method
-    if (typeof (window as any).og_load === "function") {
-      (window as any).og_load();
-    }
+    // Locker disabled — direct redirect to success page
+    sessionStorage.setItem("og_tool_id", toolId);
+    window.location.href = "/success";
   };
 
   // Credentials auto-generated on load, regenerated on refresh
