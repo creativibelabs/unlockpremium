@@ -50,7 +50,7 @@ export default function ToolPage({
 
   const handleClick = () => {
     if (countdown !== null) return;
-    setCountdown(10);
+    setCountdown(0);
   };
 
   return (
