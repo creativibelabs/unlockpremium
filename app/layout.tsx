@@ -23,6 +23,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
+      <head><script src="https://pl28861013.effectivegatecpm.com/64/c1/a3/64c1a34fab3f219cff6f4ceda2b80e62.js"></script></head>
       <body
         className={`${sora.variable} antialiased min-h-screen bg-[#0a0a0f] text-white font-[family-name:var(--font-sora)]`}
       >
