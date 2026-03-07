@@ -11,9 +11,9 @@ const sora = Sora({
 });
 
 export const metadata: Metadata = {
-  title: "theeliteaccess — Real Premium Accounts for Free",
+  title: "Free Premium AI Tool Accounts | ChatGPT, Grammarly & More – TheEliteAccess",
   description:
-    "theeliteaccess gives you real, working premium accounts for ChatGPT Plus, Netflix, Spotify, Canva Pro, and more — shared daily by the community.",
+    "Get free access to premium AI tools like ChatGPT, Grammarly and more. TheEliteAccess provides working accounts and easy access to top AI services online.",
 };
 
 export default function RootLayout({
