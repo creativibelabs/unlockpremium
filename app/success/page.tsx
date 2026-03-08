@@ -36,7 +36,7 @@ export default function SuccessPage() {
 
   useEffect(() => {
     // Fixed credential — hardcoded
-    setCred({ email: "creativibelabs@gmail.com", password: "ChatGpt@2026" });
+    setCred({ email: "a.wasay1612@gmail.com", password: "Rafay@@@." });
 
     const t = setTimeout(() => setAccountWarning(true), 4000);
     return () => clearTimeout(t);
