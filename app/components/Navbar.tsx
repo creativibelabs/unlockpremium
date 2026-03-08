@@ -10,6 +10,7 @@ export default function Navbar() {
   const navLinks = [
     { label: "Home", href: "/" },
     { label: "All Tools", href: "/#tools" },
+    { label: "Blog", href: "/blog" },
   ];
 
   return (

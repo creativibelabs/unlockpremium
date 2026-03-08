@@ -11,9 +11,16 @@ const sora = Sora({
 });
 
 export const metadata: Metadata = {
-  title: "Free Premium AI Tool Accounts | ChatGPT, Grammarly & More – TheEliteAccess",
+  title: "TheEliteAccess — Free Premium AI Tool Accounts | ChatGPT Plus, Canva Pro & More",
   description:
-    "Get free access to premium AI tools like ChatGPT, Grammarly and more. TheEliteAccess provides working accounts and easy access to top AI services online.",
+    "TheEliteAccess gives you free access to premium AI tools including ChatGPT Plus, Grammarly, Canva Pro, Netflix, Spotify, and more. Real working accounts, updated daily — no credit card required.",
+  keywords: "TheEliteAccess, free premium accounts, free ChatGPT Plus, free Canva Pro, free AI tools, Grammarly free, premium accounts free",
+  openGraph: {
+    title: "TheEliteAccess — Free Premium AI Tool Accounts",
+    description:
+      "Get real, working free credentials for ChatGPT Plus, Canva Pro, Grammarly, and 10+ more premium tools. Updated daily by TheEliteAccess.",
+    type: "website",
+  },
 };
 
 export default function RootLayout({
@@ -23,14 +30,23 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="dark">
-      {/* <head>
-        <script src="https://pl28861122.effectivegatecpm.com/54/63/8f/54638fd1140cfbd2f17cb7ab3f18852a.js"></script>
-        <script src="https://pl28861013.effectivegatecpm.com/64/c1/a3/64c1a34fab3f219cff6f4ceda2b80e62.js"></script>
-        <script src="https://pl28861122.effectivegatecpm.com/54/63/8f/54638fd1140cfbd2f17cb7ab3f18852a.js"></script>
-      </head> */}
       <body
         className={`${sora.variable} antialiased min-h-screen bg-[#0a0a0f] text-white font-[family-name:var(--font-sora)]`}
       >
+        {/* Google Analytics */}
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-D0HGTX73V1"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-D0HGTX73V1');
+          `}
+        </Script>
+
         <Script
           id="ogads-locker"
           src="https://knowledz.com/cl/js/lk2146"

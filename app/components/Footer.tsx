@@ -9,6 +9,12 @@ export default function Footer() {
       { label: "Canva Pro", href: "/tools/canva-pro" },
       { label: "ChatGPT Plus", href: "/tools/chatgpt-plus" },
     ],
+    Blog: [
+      { label: "All Posts", href: "/blog" },
+      { label: "Free ChatGPT Plus", href: "/blog/free-chatgpt-plus-access-2025" },
+      { label: "Canva Pro Free", href: "/blog/canva-pro-free-access-guide-2025" },
+      { label: "Top AI Tools Free", href: "/blog/top-premium-ai-tools-free-access-2025" },
+    ],
     Community: [
       { label: "Request a Tool", href: "mailto:contact@freevault.app" },
       { label: "Report Broken", href: "mailto:contact@freevault.app" },
