@@ -2,7 +2,10 @@ import type { MetadataRoute } from "next";
 import { tools } from "./data/tools";
 import { blogs } from "./data/blogs";
 
-const BASE_URL = "https://www.theeliteaccess.com";
+const BASE_URL = (
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  "https://www.theeliteaccess.com"
+).replace(/\/$/, "");
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
