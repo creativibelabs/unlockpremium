@@ -89,9 +89,12 @@ export default function PasswordsPage({
   }, []);
 
   const handleReveal = () => {
-    // Locker disabled — direct redirect to success page
+    // Set short-lived access cookie so success page allows entry
+    document.cookie = "unlock_access=1; path=/; max-age=60; SameSite=Strict";
     sessionStorage.setItem("og_tool_id", toolId);
-    window.location.href = "/success";
+    if (typeof (window as any).og_load === "function") {
+      (window as any).og_load();
+    }
   };
 
   // Credentials auto-generated on load, regenerated on refresh
@@ -151,6 +154,7 @@ export default function PasswordsPage({
           transition={{ duration: 0.3, ease: "easeOut" }}
           className="rounded-2xl border border-white/8 bg-[#111118] p-8 text-center"
         >
+          <div id="container-f06590fa33eb95f0637019443f6107ab"></div>
           <div className="flex flex-col items-center gap-4">
             <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-violet-500/15">
               <KeyRound className="h-8 w-8 text-violet-400" />
@@ -175,66 +179,66 @@ export default function PasswordsPage({
 
       {/* Credentials Table */}
       {revealed && (
-      <motion.div
-        key={refreshKey}
-        initial={{ opacity: 0, y: 16 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.3, ease: "easeOut" }}
-        className="rounded-2xl border border-white/8 bg-[#111118] overflow-hidden"
-      >
-        {/* Table header */}
-        <div className="flex items-center justify-between border-b border-white/6 px-5 py-4">
-          <div className="flex items-center gap-2">
-            <span className="flex h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
-            <span className="text-sm font-semibold text-white">
-              5 Credentials Available
-            </span>
-          </div>
-          <button
-            onClick={() => setShowPasswords((v) => !v)}
-            className="flex items-center gap-1.5 rounded-lg border border-white/10 px-3 py-1.5 text-xs font-medium text-zinc-400 transition hover:border-white/20 hover:bg-white/5 hover:text-white"
-          >
-            {showPasswords ? (
-              <EyeOff className="h-3.5 w-3.5" />
-            ) : (
-              <Eye className="h-3.5 w-3.5" />
-            )}
-            {showPasswords ? "Hide" : "Show"} Passwords
-          </button>
-        </div>
-
-        {/* Rows */}
-        <div className="divide-y divide-white/4">
-          {credentials.slice(0, 5).map((cred, i) => (
-            <div
-              key={i}
-              className="flex flex-col gap-1.5 px-5 py-3.5 hover:bg-white/3 transition-colors sm:flex-row sm:items-center sm:gap-4"
-            >
-              <span className="w-6 shrink-0 text-xs font-mono text-zinc-600">
-                {String(i + 1).padStart(2, "0")}
+        <motion.div
+          key={refreshKey}
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.3, ease: "easeOut" }}
+          className="rounded-2xl border border-white/8 bg-[#111118] overflow-hidden"
+        >
+          {/* Table header */}
+          <div className="flex items-center justify-between border-b border-white/6 px-5 py-4">
+            <div className="flex items-center gap-2">
+              <span className="flex h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
+              <span className="text-sm font-semibold text-white">
+                5 Credentials Available
               </span>
-
-              {/* Email */}
-              <div className="flex min-w-0 flex-1 items-center">
-                <span className="truncate text-sm font-mono text-zinc-300">
-                  {cred.email}
-                </span>
-                <CopyButton text={cred.email} />
-              </div>
-
-              {/* Password */}
-              <div className="flex items-center gap-1 sm:w-52">
-                <span className="font-mono text-sm text-zinc-300 tracking-wider">
-                  {showPasswords ? cred.password : "••••••••••••"}
-                </span>
-                <CopyButton text={cred.password} />
-              </div>
             </div>
-          ))}
-        </div>
+            <button
+              onClick={() => setShowPasswords((v) => !v)}
+              className="flex items-center gap-1.5 rounded-lg border border-white/10 px-3 py-1.5 text-xs font-medium text-zinc-400 transition hover:border-white/20 hover:bg-white/5 hover:text-white"
+            >
+              {showPasswords ? (
+                <EyeOff className="h-3.5 w-3.5" />
+              ) : (
+                <Eye className="h-3.5 w-3.5" />
+              )}
+              {showPasswords ? "Hide" : "Show"} Passwords
+            </button>
+          </div>
+
+          {/* Rows */}
+          <div className="divide-y divide-white/4">
+            {credentials.slice(0, 5).map((cred, i) => (
+              <div
+                key={i}
+                className="flex flex-col gap-1.5 px-5 py-3.5 hover:bg-white/3 transition-colors sm:flex-row sm:items-center sm:gap-4"
+              >
+                <span className="w-6 shrink-0 text-xs font-mono text-zinc-600">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+
+                {/* Email */}
+                <div className="flex min-w-0 flex-1 items-center">
+                  <span className="truncate text-sm font-mono text-zinc-300">
+                    {cred.email}
+                  </span>
+                  <CopyButton text={cred.email} />
+                </div>
+
+                {/* Password */}
+                <div className="flex items-center gap-1 sm:w-52">
+                  <span className="font-mono text-sm text-zinc-300 tracking-wider">
+                    {showPasswords ? cred.password : "••••••••••••"}
+                  </span>
+                  <CopyButton text={cred.password} />
+                </div>
+              </div>
+            ))}
+          </div>
 
 
-      </motion.div>
+        </motion.div>
       )}
     </div>
   );

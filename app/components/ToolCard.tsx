@@ -43,7 +43,7 @@ export default function ToolCard({ tool, index }: ToolCardProps) {
 
   const handleClick = () => {
     if (countdown !== null) return;
-    setCountdown(0);
+    setCountdown(10);
   };
 
   return (

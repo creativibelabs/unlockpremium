@@ -50,7 +50,7 @@ export default function ToolPage({
 
   const handleClick = () => {
     if (countdown !== null) return;
-    setCountdown(0);
+    setCountdown(10);
   };
 
   return (
@@ -132,6 +132,7 @@ export default function ToolPage({
 
       {/* ─── CTA to Passwords Page ─── */}
       <div className="mt-6 rounded-2xl border border-white/8 bg-[#111118] p-8 text-center">
+        <div id="container-f06590fa33eb95f0637019443f6107ab"></div>
         <div className="flex flex-col items-center gap-3">
           <div
             className={`flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br ${tool.gradient} shadow-xl`}

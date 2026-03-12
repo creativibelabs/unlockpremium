@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import {
@@ -29,14 +30,41 @@ function CopyButton({ text }: { text: string }) {
   );
 }
 
+const ADJECTIVES = ["cool", "fast", "dark", "free", "pro", "smart", "quick", "neon", "true", "mega", "ultra", "super", "hyper", "bold", "epic"];
+const NOUNS = ["user", "access", "pass", "hub", "zone", "vault", "link", "base", "core", "spot", "fox", "hawk", "wolf", "byte", "node"];
+const DOMAINS = ["gmail.com", "outlook.com", "yahoo.com", "hotmail.com", "proton.me", "icloud.com"];
+const WORDS = ["Unlock", "Access", "Premium", "Secure", "Master", "Hyper", "Ultra", "Turbo", "Alpha", "Delta"];
+const SYMBOLS = ["@", "#", "$", "!"];
+
+function rand<T>(arr: T[]): T {
+  return arr[Math.floor(Math.random() * arr.length)];
+}
+
+function generateCredentials() {
+  const num = Math.floor(100 + Math.random() * 9000);
+  const email = `${rand(ADJECTIVES)}.${rand(NOUNS)}${num}@${rand(DOMAINS)}`;
+  const passNum = Math.floor(1000 + Math.random() * 9000);
+  const password = `${rand(WORDS)}${rand(SYMBOLS)}${passNum}`;
+  return { email, password };
+}
+
 export default function SuccessPage() {
+  const router = useRouter();
   const [cred, setCred] = useState<{ email: string; password: string } | null>(null);
   const [showPassword, setShowPassword] = useState(true);
   const [accountWarning, setAccountWarning] = useState(false);
 
   useEffect(() => {
-    // Fixed credential — hardcoded
-    setCred({ email: "creativibelabs@gmail.com", password: "ChatGPT@1235" });
+    // Guard: only allow entry if the access cookie from Show Passwords click exists
+    const hasCookie = document.cookie.split(";").some((c) => c.trim().startsWith("unlock_access="));
+    if (!hasCookie) {
+      router.replace("/");
+      return;
+    }
+    // Delete the cookie immediately so refresh/direct-access is blocked
+    document.cookie = "unlock_access=; path=/; max-age=0; SameSite=Strict";
+
+    setCred(generateCredentials());
 
     const t = setTimeout(() => setAccountWarning(true), 4000);
     return () => clearTimeout(t);

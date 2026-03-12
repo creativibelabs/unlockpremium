@@ -146,6 +146,8 @@ export default async function BlogPostPage({ params }: Props) {
           <span className="text-xs text-zinc-600">{blog.date}</span>
         </div>
 
+        <div id="container-f06590fa33eb95f0637019443f6107ab"></div>
+        
         <h1 className="text-3xl font-extrabold leading-tight text-white sm:text-4xl">
           {blog.title}
         </h1>

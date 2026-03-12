@@ -35,6 +35,7 @@ export default function BlogListPage() {
           Everything you need to know about accessing premium tools for free — written by
           the team behind TheEliteAccess.
         </p>
+        <div id="container-f06590fa33eb95f0637019443f6107ab"></div>
       </div>
 
       {/* Featured Post */}
