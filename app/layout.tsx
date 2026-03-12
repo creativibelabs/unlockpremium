@@ -35,12 +35,12 @@ export default function RootLayout({
       >
         {/* Popunder */}
         <script src="https://pl28861013.effectivegatecpm.com/64/c1/a3/64c1a34fab3f219cff6f4ceda2b80e62.js"></script>
-        
+
         {/* Social Bar */}
         <script src="https://pl28861122.effectivegatecpm.com/54/63/8f/54638fd1140cfbd2f17cb7ab3f18852a.js"></script>
 
         {/* Native Banner */}
-        <script async="async" data-cfasync="false" src="https://pl28861155.effectivegatecpm.com/f06590fa33eb95f0637019443f6107ab/invoke.js"></script>
+        <script async={true} data-cfasync="false" src="https://pl28861155.effectivegatecpm.com/f06590fa33eb95f0637019443f6107ab/invoke.js"></script>
 
         {/* Google Analytics */}
         <Script
